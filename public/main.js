@@ -3,40 +3,28 @@
 const getWeather = () => {
   let currentWeather = {}
   let findCity = document.querySelector('.location').value
+  let parameter = 'zip'
   console.log(findCity)
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${findCity}&appid=ff684675032bb7d3fa1c601417c8df7a&units=imperial`
-  console.log(url)
-  let zipurl = `https://api.openweathermap.org/data/2.5/weather?zip=${findCity}&appid=ff684675032bb7d3fa1c601417c8df7a&units=imperial`
+  // let url = `https://api.openweathermap.org/data/2.5/weather?q=${findCity}&appid=ff684675032bb7d3fa1c601417c8df7a&units=imperial`
+  // console.log(url)
 
   if (isNaN(findCity)) {
-    fetch(url)
-      .then(resp => {
-        return resp.json()
-      })
-      .then(cityWeather => {
-        console.log(cityWeather)
-        // currentWeather = cityWeather
-        // console.log(currentWeather)
-        console.log(cityWeather.weather[0].description)
-        const _article = document.createElement('article')
-        _article.textContent = cityWeather.weather[0].description
-        document.querySelector('.weather').appendChild(_article)
-      })
-  } else {
-    fetch(zipurl)
-      .then(resp => {
-        return resp.json()
-      })
-      .then(cityWeather => {
-        console.log(cityWeather)
-        // currentWeather = cityWeather
-        // console.log(currentWeather)
-        console.log(cityWeather.weather[0].description)
-        const _article = document.createElement('article')
-        _article.textContent = cityWeather.weather[0].description
-        document.querySelector('.weather').appendChild(_article)
-      })
+    parameter = 'q'
   }
+  let url = `https://api.openweathermap.org/data/2.5/weather?${parameter}=${findCity}&appid=ff684675032bb7d3fa1c601417c8df7a&units=imperial`
+  fetch(url)
+    .then(resp => {
+      return resp.json()
+    })
+    .then(cityWeather => {
+      console.log(cityWeather)
+      // currentWeather = cityWeather
+      // console.log(currentWeather)
+      console.log(cityWeather.weather[0].description)
+      const _article = document.createElement('article')
+      _article.textContent = cityWeather.weather[0].description
+      document.querySelector('.weather').appendChild(_article)
+    })
 }
 
 const main = () => {

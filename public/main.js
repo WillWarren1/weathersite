@@ -27,7 +27,7 @@ const getWeather = () => {
       _h2.textContent = cityWeather.weather[0].description
       document.querySelector('.weather').appendChild(_h2)
       const _h3 = document.createElement('h3')
-      _h3.textContent = cityWeather.main.temp
+      _h3.textContent = cityWeather.main.temp + ' degrees Farhenheit'
       document.querySelector('.weather').appendChild(_h3)
       const _h4 = document.createElement('h4')
       _h4.textContent = cityWeather.name

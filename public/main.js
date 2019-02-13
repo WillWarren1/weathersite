@@ -21,9 +21,17 @@ const getWeather = () => {
       // currentWeather = cityWeather
       // console.log(currentWeather)
       console.log(cityWeather.weather[0].description)
-      const _article = document.createElement('article')
-      _article.textContent = cityWeather.weather[0].description
-      document.querySelector('.weather').appendChild(_article)
+      // theres 100% a better way to do what comes next
+      //but i am currently lacking the brain power to even attempt it
+      const _h2 = document.createElement('h2')
+      _h2.textContent = cityWeather.weather[0].description
+      document.querySelector('.weather').appendChild(_h2)
+      const _h3 = document.createElement('h3')
+      _h3.textContent = cityWeather.main.temp
+      document.querySelector('.weather').appendChild(_h3)
+      const _h4 = document.createElement('h4')
+      _h4.textContent = cityWeather.name
+      document.querySelector('.weather').appendChild(_h4)
     })
 }
 
